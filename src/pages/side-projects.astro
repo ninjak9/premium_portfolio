@@ -1,0 +1,39 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Side Projects | Lab Sessions">
+	<section class="mb-16">
+		<span class="text-accent text-label-sm uppercase tracking-widest mb-2 block">Experimental</span>
+		<h1 class="text-h1 font-semibold mb-4">Lab Sessions.</h1>
+		<p class="text-secondary max-w-[650px]">Where I push the boundaries of interaction design and technical performance. These are fragments of thought, turned into code.</p>
+	</section>
+
+	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+		{[1, 2, 3, 4, 5, 6].map((i) => (
+			<div class="rounded-xl border border-white/5 bg-neutral p-6 hover:border-white/20 transition-all group">
+				<div class="w-12 h-12 rounded-lg bg-surface-tint/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+				</div>
+				<h3 class="text-xl font-medium mb-2">Lab Experiment {i}</h3>
+				<p class="text-secondary text-sm mb-6">Investigating the performance of spring-physics based navigation systems in modern browsers.</p>
+				<div class="flex gap-2">
+					<span class="px-2 py-1 rounded bg-white/5 text-[10px] text-secondary font-mono">React</span>
+					<span class="px-2 py-1 rounded bg-white/5 text-[10px] text-secondary font-mono">Framer Motion</span>
+				</div>
+			</div>
+		))}
+	</div>
+</Layout>
+
+<style>
+	.text-h1 {
+		font-size: 48px;
+		line-height: 1.2;
+		letter-spacing: -0.02em;
+	}
+	.text-label-sm {
+		font-size: 12px;
+		letter-spacing: 0.05em;
+	}
+</style>
