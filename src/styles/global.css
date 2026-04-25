@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #131313;
+  --color-background: #020204;
   --color-primary: #ffffff;
-  --color-secondary: #a1a1a6;
-  --color-accent: #0a84ff;
+  --color-secondary: #c6c6cb;
+  --color-accent: #3b82f6;
+  --color-purple: #8b5cf6;
   --color-neutral: #000000;
-  --color-surface-tint: #c6c6c7;
 
   --font-inter: "Inter", sans-serif;
 
@@ -15,6 +15,9 @@
   --radius-lg: 1rem;
   --radius-xl: 1.5rem;
   --radius-2xl: 2rem;
+  --radius-3xl: 2.5rem;
+
+  --spacing-card-gap: 24px;
 }
 
 @layer base {
@@ -22,5 +25,131 @@
     @apply bg-background text-primary font-inter antialiased;
     margin: 0;
     padding: 0;
+    background-color: #020204;
+    overflow-x: hidden;
   }
+}
+
+@layer components {
+  .glass {
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    
+    /* Rim Light Effect with proper rounding */
+    position: relative;
+    border-radius: inherit; /* Ensure it matches the parent's radius */
+    
+    /* Large Soft Shadow */
+    box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.3);
+    
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    transform-style: preserve-3d;
+    overflow: hidden; /* Ensure inner glows are clipped */
+  }
+
+  /* Rim Light using pseudo-element to ensure it follows curves exactly */
+  .glass::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    border-radius: inherit;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
+    -webkit-mask: 
+      linear-gradient(#fff 0 0) content-box, 
+      linear-gradient(#fff 0 0);
+    mask: 
+      linear-gradient(#fff 0 0) content-box, 
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .glass-hover:hover {
+    box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.5);
+  }
+
+  .nebula-glow {
+    position: absolute;
+    width: 140%;
+    height: 140%;
+    top: -20%;
+    left: -20%;
+    z-index: -1;
+    filter: blur(80px);
+    opacity: 0.12;
+    background: radial-gradient(circle at center, var(--glow-color, #3b82f6) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .bg-blob {
+    position: fixed;
+    width: 800px;
+    height: 800px;
+    border-radius: 50%;
+    filter: blur(160px);
+    opacity: 0.12;
+    z-index: -2;
+    pointer-events: none;
+    animation: drift-blobs 25s ease-in-out infinite alternate;
+  }
+
+  .blob-blue {
+    background: #3b82f6;
+    top: -10%;
+    left: -10%;
+    animation-delay: 0s;
+  }
+
+  .blob-purple {
+    background: #8b5cf6;
+    bottom: -10%;
+    right: -10%;
+    animation-delay: -7s;
+  }
+
+  .milky-way-wrapper {
+    position: fixed;
+    inset: 0;
+    z-index: -3;
+    pointer-events: none;
+  }
+
+  .star-field {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      radial-gradient(0.8px 0.8px at 10% 10%, #fff, rgba(0,0,0,0)),
+      radial-gradient(0.8px 0.8px at 20% 30%, #fff, rgba(0,0,0,0)),
+      radial-gradient(1.2px 1.2px at 40% 70%, #fff, rgba(0,0,0,0)),
+      radial-gradient(0.8px 0.8px at 50% 16%, #fff, rgba(0,0,0,0)),
+      radial-gradient(1.2px 1.2px at 80% 12%, #fff, rgba(0,0,0,0));
+    background-repeat: repeat;
+    background-size: 800px 800px;
+    opacity: 0.08;
+  }
+
+  .text-display {
+    @apply text-[96px] font-black leading-[1] tracking-[-0.05em] uppercase italic;
+  }
+
+  .text-h1 {
+    @apply text-[64px] font-extrabold leading-[1.1] tracking-[-0.04em] uppercase italic;
+  }
+
+  .text-h2 {
+    @apply text-[40px] font-bold leading-[1.2] tracking-[-0.02em];
+  }
+
+  .text-label-sm {
+    @apply text-[11px] font-semibold tracking-[0.1em] uppercase;
+  }
+}
+
+@keyframes drift-blobs {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(150px, 80px) scale(1.1); }
+  100% { transform: translate(-80px, 150px) scale(0.95); }
 }

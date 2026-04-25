@@ -9,32 +9,100 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Portfolio Website - Ethereal Noir" />
+		<meta name="description" content="Portfolio Website - Studio Precision" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
 	</head>
-	<body class="min-h-screen bg-background text-primary">
-		<nav class="fixed top-0 left-0 w-full z-50 px-12 py-8 flex justify-between items-center backdrop-blur-md bg-background/50 border-b border-white/10">
-			<a href="/" class="text-2xl font-bold tracking-tight">Portfolio</a>
-			<div class="flex gap-8">
-				<a href="/" class="hover:text-accent transition-colors">Home</a>
-				<a href="/portfolio" class="hover:text-accent transition-colors">Portfolio</a>
-				<a href="/side-projects" class="hover:text-accent transition-colors">Lab</a>
+	<body class="min-h-screen bg-background text-primary font-inter antialiased selection:bg-white selection:text-black">
+		<!-- Premium Background Layer -->
+		<div class="milky-way-wrapper">
+			<div class="star-field"></div>
+			<div class="bg-blob blob-blue"></div>
+			<div class="bg-blob blob-purple"></div>
+		</div>
+
+		<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-12 py-10 max-w-[1440px] mx-auto left-1/2 -translate-x-1/2 pointer-events-none">
+			<div class="text-sm font-black tracking-[0.3em] text-white pointer-events-auto">STUDIO_PRECISION</div>
+			<nav class="hidden md:flex items-center gap-12 pointer-events-auto">
+				<a class="font-inter tracking-widest uppercase text-[10px] font-bold text-white hover:opacity-70 transition-opacity duration-300" href="/">Work</a>
+				<a class="font-inter tracking-widest uppercase text-[10px] font-bold text-white/40 hover:text-white transition-opacity duration-300" href="/portfolio">Portfolio</a>
+				<a class="font-inter tracking-widest uppercase text-[10px] font-bold text-white/40 hover:text-white transition-opacity duration-300" href="/side-projects">Lab</a>
+			</nav>
+			<div class="flex items-center gap-6 pointer-events-auto">
+				<span class="material-symbols-outlined text-white cursor-pointer active:scale-95 transition-transform">menu</span>
 			</div>
-		</nav>
-		<main class="pt-32 px-12 max-w-[1280px] mx-auto">
+		</header>
+
+		<main class="max-w-[1280px] mx-auto px-12 pt-48 pb-32 relative z-10">
 			<slot />
 		</main>
-		<footer class="mt-32 pb-12 px-12 text-center text-secondary text-sm">
-			<p>&copy; 2026 Portfolio Website. Built with Astro & Tailwind 4.</p>
+
+		<footer class="w-full max-w-[1280px] mx-auto px-12 pt-32 pb-24 flex flex-col items-start gap-16 border-t border-white/10 relative z-10">
+			<div class="text-xl font-black tracking-[0.4em] text-white">STUDIO PRECISION</div>
+			<div class="grid grid-cols-1 md:grid-cols-4 w-full gap-16">
+				<div class="space-y-6">
+					<span class="font-label-sm text-white/20 uppercase tracking-[0.3em] block">SOCIAL CONNECT</span>
+					<div class="flex flex-col gap-3">
+						<a class="font-inter text-[11px] leading-relaxed tracking-[0.2em] uppercase text-white/30 hover:text-white hover:translate-x-1 transition-all duration-300" href="#">Instagram</a>
+						<a class="font-inter text-[11px] leading-relaxed tracking-[0.2em] uppercase text-white/30 hover:text-white hover:translate-x-1 transition-all duration-300" href="#">Are.na</a>
+						<a class="font-inter text-[11px] leading-relaxed tracking-[0.2em] uppercase text-white/30 hover:text-white hover:translate-x-1 transition-all duration-300" href="#">LinkedIn</a>
+						<a class="font-inter text-[11px] leading-relaxed tracking-[0.2em] uppercase text-white/30 hover:text-white hover:translate-x-1 transition-all duration-300" href="#">Email</a>
+					</div>
+				</div>
+				<div class="md:col-span-3 flex items-end md:justify-end">
+					<span class="font-inter text-[10px] leading-relaxed tracking-[0.4em] uppercase text-white/20 italic">©2026 STUDIO PRECISION — MINIMALISM AS A REBELLION.</span>
+				</div>
+			</div>
 		</footer>
+
+		<div class="fixed bottom-12 left-1/2 -translate-x-1/2 z-50 flex gap-4 p-2 bg-white/5 backdrop-blur-2xl rounded-full border border-white/10 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8)]">
+			<a class="flex items-center justify-center bg-white text-black rounded-full w-14 h-14 scale-100 hover:scale-110 transition-all duration-300" href="/">
+				<span class="material-symbols-outlined font-light">grid_view</span>
+			</a>
+			<a class="flex items-center justify-center text-white/40 w-14 h-14 hover:text-white hover:bg-white/5 rounded-full transition-all duration-300" href="/portfolio">
+				<span class="material-symbols-outlined font-light">layers</span>
+			</a>
+			<a class="flex items-center justify-center text-white/40 w-14 h-14 hover:text-white hover:bg-white/5 rounded-full transition-all duration-300" href="/side-projects">
+				<span class="material-symbols-outlined font-light">history</span>
+			</a>
+			<a class="flex items-center justify-center text-white/40 w-14 h-14 hover:text-white hover:bg-white/5 rounded-full transition-all duration-300" href="#">
+				<span class="material-symbols-outlined font-light">database</span>
+			</a>
+		</div>
+
+		<script>
+			// Refined Professional 3D Tilt Effect
+			const cards = document.querySelectorAll('.glass');
+			
+			cards.forEach(card => {
+				card.addEventListener('mousemove', e => {
+					const rect = card.getBoundingClientRect();
+					const x = e.clientX - rect.left;
+					const y = e.clientY - rect.top;
+					
+					const centerX = rect.width / 2;
+					const centerY = rect.height / 2;
+					
+					// Max tilt of ~4 degrees
+					const rotateX = (y - centerY) / 45; 
+					const rotateY = (centerX - x) / 45;
+					
+					card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px) scale(1.01)`;
+				});
+				
+				card.addEventListener('mouseleave', () => {
+					card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0) scale(1)`;
+				});
+			});
+		</script>
 	</body>
 </html>
